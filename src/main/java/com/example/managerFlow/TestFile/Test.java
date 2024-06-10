@@ -1,4 +1,4 @@
-package TestFile;
+package com.example.managerFlow.TestFile;
 
 public class Test {
     public static int add(int a, int b){
