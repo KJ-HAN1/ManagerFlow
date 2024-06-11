@@ -20,6 +20,11 @@ bin/
 ### IntelliJ IDEA ###
 applicaton.properties
 bulid.gradle
+settings.gradle
+gradlew
+gradlew.bat
+
+
 
 
 .idea
