@@ -6,9 +6,4 @@ public class test {
         int a;
         int v = 1;
     }
-
-
-
-
-
 }
