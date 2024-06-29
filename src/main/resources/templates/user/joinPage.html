@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Join</title>
+</head>
+    <body>
+    <h1>Join</h1>
+        <form action="#" th:action="@{/user/join-submit}" th:object="${userJoinDto}" method="post">
+            <label for="userName">Username:</label>
+            <input type="text" id="userName" th:field="*{userName}"/><br/>
+            <div th:if="${#fields.hasErrors('userName')}" th:errors="*{userName}">Username Error</div>
+<!--            userName 필드에 대해서 에러 발생했을때, 그 필드에 대한 valid 메세지 반환-->
+            <label for="email">Email:</label>
+            <input type="email" id="email" th:field="*{email}"/><br/>
+            <div th:if="${#fields.hasErrors('email')}" th:errors="*{email}">Email Error</div>
+
+            <label for="storeName">Store Name:</label>
+            <input type="text" id="storeName" th:field="*{storeName}"/><br/>
+            <div th:if="${#fields.hasErrors('storeName')}" th:errors="*{storeName}">Store Name Error</div>
+
+            <label for="password">Password:</label>
+            <input type="password" id="password" th:field="*{password}"/><br/>
+            <div th:if="${#fields.hasErrors('password')}" th:errors="*{password}">Password Error</div>
+
+            <label for="reconfirmPassword">Confirm Password:</label>
+            <input type="password" id="reconfirmPassword" th:field="*{reconfirmPassword}"/><br/>
+            <div th:if="${#fields.hasErrors('reconfirmPassword')}" th:errors="*{reconfirmPassword}">Confirm Password Error</div>
+            <button type="submit">Sign Up</button>
+        </form>
+    </body>
+</html>
