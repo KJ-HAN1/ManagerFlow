@@ -1,12 +1,15 @@
 package com.example.managerFlow.user.domain;
 
 import jakarta.persistence.*;
-import lombok.Builder;
-import lombok.Data;
+import lombok.*;
+
+
 
 @Data
-@Builder //빌더 패턴사용
-@Entity(name = "USER") // 엔티티임을 명시
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
+@Entity(name = "USER")
 public class User {
     @Id
     @GeneratedValue( strategy = GenerationType.IDENTITY)
