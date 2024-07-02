@@ -27,7 +27,7 @@ public class UserController {
 
     @GetMapping("/join") //GET
     public String showJoinForm(Model model) {
-        model.addAttribute("userJoinDto", new UserDto()); // 빈 객체 폼에 전달
+        model.addAttribute("userDto", new UserDto()); // 빈 객체 폼에 전달
         return "user/joinPage"; // 뷰 반환
     }
 
