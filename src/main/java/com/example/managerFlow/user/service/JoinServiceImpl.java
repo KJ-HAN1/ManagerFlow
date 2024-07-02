@@ -1,33 +1,33 @@
 package com.example.managerFlow.user.service;
 
 import com.example.managerFlow.user.domain.User;
-import com.example.managerFlow.user.dto.UserJoinDto;
+import com.example.managerFlow.user.dto.UserDto;
 import com.example.managerFlow.user.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 @Service
-public class UserServiceImpl implements UserService{
+public class JoinServiceImpl implements JoinService {
 
     private final UserRepository userRepository;
     private final PasswordEncoder passwordEncoder;
 
     @Autowired
-    public UserServiceImpl(UserRepository userRepository, PasswordEncoder passwordEncoder) {
+    public JoinServiceImpl(UserRepository userRepository, PasswordEncoder passwordEncoder) {
         this.userRepository = userRepository;
         this.passwordEncoder = passwordEncoder;
     }
 
-    public void save(UserJoinDto userJoinDto) {
+    public void save(UserDto userDto) {
 
 
-        String encodedPassword = passwordEncoder.encode(userJoinDto.getPassword());
+        String encodedPassword = passwordEncoder.encode(userDto.getPassword());
 
         User user = User.builder().
-                userName(userJoinDto.getUserName()).
-                email(userJoinDto.getEmail()).
-                storeName(userJoinDto.getStoreName()).
+                userName(userDto.getUserName()).
+                email(userDto.getEmail()).
+                storeName(userDto.getStoreName()).
                 password(encodedPassword).
                 build();
 

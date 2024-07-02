@@ -2,7 +2,7 @@ package com.example.managerFlow.user.service;
 
 
 import com.example.managerFlow.user.domain.User;
-import com.example.managerFlow.user.dto.UserJoinDto;
+import com.example.managerFlow.user.dto.UserDto;
 import com.example.managerFlow.user.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -23,19 +23,19 @@ public class LoginServiceImpl implements LoginService{
     }
 
 
-    public  UserJoinDto login(UserJoinDto userJoinDto) {
+    public UserDto login(UserDto userDto) {
         //userEmail 조회과정
         //findByEmail로 repository내 userDTO값 조회
-        Optional<User> byEmail = userRepository.findByEmail(userJoinDto.getEmail());
+        Optional<User> byEmail = userRepository.findByEmail(userDto.getEmail());
         if (byEmail.isPresent()) {
             //userEmail true
             User user = byEmail.get();
 
             //password 일치확인 과정
-            if (passwordEncoder.matches(userJoinDto.getPassword(),user.getPassword())) {
+            if (passwordEncoder.matches(userDto.getPassword(),user.getPassword())) {
                 //password true
                 //entity to dto & return
-                return UserJoinDto.toUserJoinDto(user);
+                return UserDto.toUserDto(user);
             } else {
                 //password false
                 //null return

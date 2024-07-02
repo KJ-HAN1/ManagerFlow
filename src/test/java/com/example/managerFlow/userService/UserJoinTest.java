@@ -1,9 +1,9 @@
 package com.example.managerFlow.userService;
 
 import com.example.managerFlow.user.domain.User;
-import com.example.managerFlow.user.dto.UserJoinDto;
+import com.example.managerFlow.user.dto.UserDto;
 import com.example.managerFlow.user.repository.UserRepository;
-import com.example.managerFlow.user.service.UserService;
+import com.example.managerFlow.user.service.JoinService;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -23,16 +23,16 @@ import static org.assertj.core.api.Assertions.*;
 public class UserJoinTest {
 
     @Autowired
-    private UserService userService;
+    private JoinService joinService;
 
     @Autowired
     private UserRepository userRepository;
 
-    UserJoinDto user1;
+    UserDto user1;
 
     @BeforeEach
     void setUp() {
-        user1 = new UserJoinDto("name1", "email@naver.com", "store1", "password1", "password1");
+        user1 = new UserDto("name1", "email@naver.com", "store1", "password1", "password1");
     }
 
     @AfterEach()
@@ -45,10 +45,10 @@ public class UserJoinTest {
     void joinTest() {
         //given
         // @BeforeEach의 user1
-        UserJoinDto user2 = new UserJoinDto("name2", "email2@naver.com", "store2", "password2", "password2");
+        UserDto user2 = new UserDto("name2", "email2@naver.com", "store2", "password2", "password2");
         //when
-        userService.save(user1);
-        userService.save(user2);
+        joinService.save(user1);
+        joinService.save(user2);
 
         //then
         //회원가입 확인
@@ -67,12 +67,12 @@ public class UserJoinTest {
     void joinDuplicationExceptionTest() {
         //given
         // @BeforeEach의 user1
-        userService.save(user1); //초기 유저 저장
-        UserJoinDto user2 = new UserJoinDto("name1", "email@naver.com", "store1", "password1", "password1");
+        joinService.save(user1); //초기 유저 저장
+        UserDto user2 = new UserDto("name1", "email@naver.com", "store1", "password1", "password1");
 
         //when then
         org.junit.jupiter.api.Assertions.assertThrows(DataIntegrityViolationException.class, () ->{
-            userService.save(user2); // 예외발생
+            joinService.save(user2); // 예외발생
         });
 
     }
@@ -84,7 +84,7 @@ public class UserJoinTest {
         // @BeforeEach의 user1
         String password = user1.getPassword();
         //when
-        userService.save(user1);
+        joinService.save(user1);
 
         //then
         Optional<User> savedUser = userRepository.findByEmail("email@naver.com");
