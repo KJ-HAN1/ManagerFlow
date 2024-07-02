@@ -1,6 +1,7 @@
 package com.example.managerFlow.user.dto;
 
 
+import com.example.managerFlow.user.validation.PasswordComplexity;
 import com.example.managerFlow.user.domain.User;
 import jakarta.validation.constraints.AssertTrue;
 import jakarta.validation.constraints.Email;
@@ -12,7 +13,6 @@ import lombok.*;
 @Data // getter, setter, toString, equles 등등
 @NoArgsConstructor // 파라미터 없는 생성자
 @AllArgsConstructor // 모든 필드 파라미터 필수 생성자
-@Getter
 public class UserJoinDto {
 
     @NotEmpty(message = "사용자명은 필수 입력 항목입니다")

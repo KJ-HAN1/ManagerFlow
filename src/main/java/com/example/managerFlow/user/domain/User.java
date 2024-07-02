@@ -9,7 +9,6 @@ import lombok.NoArgsConstructor;
 @Data
 @Builder //빌더 패턴사용
 @Entity(name = "USER") // 엔티티임을 명시
-
 @NoArgsConstructor // 기본 생성자 추가
 @AllArgsConstructor // 모든 필드를 초기화하는 생성자 추가
 
