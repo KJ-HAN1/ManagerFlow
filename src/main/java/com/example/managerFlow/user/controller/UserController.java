@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 @Controller // 컨트롤러 임을 명시
 public class UserController {
 
+
     private final LoginService loginService;
     private final JoinService joinService;
 
