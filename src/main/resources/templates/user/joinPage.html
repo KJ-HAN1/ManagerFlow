@@ -5,7 +5,7 @@
 </head>
     <body>
     <h1>Join</h1>
-        <form action="#" th:action="@{/user/join-submit}" th:object="${userJoinDto}" method="post">
+        <form action="#" th:action="@{/join-submit}" th:object="${userDto}" method="post">
             <label for="userName">Username:</label>
             <input type="text" id="userName" th:field="*{userName}"/><br/>
             <div th:if="${#fields.hasErrors('userName')}" th:errors="*{userName}">Username Error</div>

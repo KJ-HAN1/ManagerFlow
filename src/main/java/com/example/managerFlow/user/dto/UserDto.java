@@ -1,7 +1,6 @@
 package com.example.managerFlow.user.dto;
 
 
-import com.example.managerFlow.user.validation.PasswordComplexity;
 import com.example.managerFlow.user.domain.User;
 import jakarta.validation.constraints.AssertTrue;
 import jakarta.validation.constraints.Email;
@@ -13,7 +12,7 @@ import lombok.*;
 @Data // getter, setter, toString, equles 등등
 @NoArgsConstructor // 파라미터 없는 생성자
 @AllArgsConstructor // 모든 필드 파라미터 필수 생성자
-public class UserJoinDto {
+public class UserDto {
 
     @NotEmpty(message = "사용자명은 필수 입력 항목입니다")
     @Size(min = 2, max = 30, message = "사용자명은 2자에서 30자 사이어야 합니다")
@@ -36,14 +35,14 @@ public class UserJoinDto {
 
 
     //entity to dto
-    public static UserJoinDto toUserJoinDto(User user) {
-        UserJoinDto userJoinDto = new UserJoinDto();
-        userJoinDto.setUserName(user.getUserName());
-        userJoinDto.setEmail(user.getEmail());
-        userJoinDto.setStoreName(user.getStoreName());
-        userJoinDto.setPassword(user.getPassword());
+    public static UserDto toUserDto(User user) {
+        UserDto userDto = new UserDto();
+        userDto.setUserName(user.getUserName());
+        userDto.setEmail(user.getEmail());
+        userDto.setStoreName(user.getStoreName());
+        userDto.setPassword(user.getPassword());
 
-        return userJoinDto;
+        return userDto;
     }
 
     @AssertTrue(message = "비밀번호와 비밀번호 확인이 일치해야 합니다")

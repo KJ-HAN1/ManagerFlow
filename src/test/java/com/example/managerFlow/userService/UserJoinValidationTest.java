@@ -1,6 +1,6 @@
 package com.example.managerFlow.userService;
 
-import com.example.managerFlow.user.dto.UserJoinDto;
+import com.example.managerFlow.user.dto.UserDto;
 import jakarta.validation.ConstraintViolation;
 import jakarta.validation.Validation;
 import jakarta.validation.Validator;
@@ -34,16 +34,16 @@ public class UserJoinValidationTest {
     void NameValidationIsEmpty() {
 
         //given
-        UserJoinDto userJoinDto = new UserJoinDto(null, "email@naver.com", "storeName", "password", "password");
+        UserDto userDto = new UserDto(null, "email@naver.com", "storeName", "password", "password");
 
         //when
-        Set<ConstraintViolation<UserJoinDto>> validate = validator.validate(userJoinDto);
+        Set<ConstraintViolation<UserDto>> validate = validator.validate(userDto);
 
         //Then
-        Iterator<ConstraintViolation<UserJoinDto>> iterator = validate.iterator();
+        Iterator<ConstraintViolation<UserDto>> iterator = validate.iterator();
         List<String> messages = new ArrayList<>();
         while (iterator.hasNext()) {
-            ConstraintViolation<UserJoinDto> next = iterator.next();
+            ConstraintViolation<UserDto> next = iterator.next();
             messages.add(next.getMessage());
             System.out.println("message = " + next.getMessage());
         }
@@ -56,16 +56,16 @@ public class UserJoinValidationTest {
     void NameValidationIsShortLength() {
 
         //given
-        UserJoinDto userJoinDto = new UserJoinDto("n", "email@naver.com", "storeName", "password", "password");
+        UserDto userDto = new UserDto("n", "email@naver.com", "storeName", "password", "password");
 
         //when
-        Set<ConstraintViolation<UserJoinDto>> validate = validator.validate(userJoinDto);
+        Set<ConstraintViolation<UserDto>> validate = validator.validate(userDto);
 
         //Then
-        Iterator<ConstraintViolation<UserJoinDto>> iterator = validate.iterator();
+        Iterator<ConstraintViolation<UserDto>> iterator = validate.iterator();
         List<String> messages = new ArrayList<>();
         while (iterator.hasNext()) {
-            ConstraintViolation<UserJoinDto> next = iterator.next();
+            ConstraintViolation<UserDto> next = iterator.next();
             messages.add(next.getMessage());
             System.out.println("message = " + next.getMessage());
         }
@@ -78,16 +78,16 @@ public class UserJoinValidationTest {
     void emailValidationIsNotEmpty() {
 
         //given
-        UserJoinDto userJoinDto = new UserJoinDto("userName", null, "storeName", "password", "password");
+        UserDto userDto = new UserDto("userName", null, "storeName", "password", "password");
 
         //when
-        Set<ConstraintViolation<UserJoinDto>> validate = validator.validate(userJoinDto);
+        Set<ConstraintViolation<UserDto>> validate = validator.validate(userDto);
 
         //Then
-        Iterator<ConstraintViolation<UserJoinDto>> iterator = validate.iterator();
+        Iterator<ConstraintViolation<UserDto>> iterator = validate.iterator();
         List<String> messages = new ArrayList<>();
         while (iterator.hasNext()) {
-            ConstraintViolation<UserJoinDto> next = iterator.next();
+            ConstraintViolation<UserDto> next = iterator.next();
             messages.add(next.getMessage());
             System.out.println("message = " + next.getMessage());
         }
@@ -100,16 +100,16 @@ public class UserJoinValidationTest {
     void emailValidationIsFormat() {
 
         //given
-        UserJoinDto userJoinDto = new UserJoinDto("userName", "email", "storeName", "password", "password");
+        UserDto userDto = new UserDto("userName", "email", "storeName", "password", "password");
 
         //when
-        Set<ConstraintViolation<UserJoinDto>> validate = validator.validate(userJoinDto);
+        Set<ConstraintViolation<UserDto>> validate = validator.validate(userDto);
 
         //Then
-        Iterator<ConstraintViolation<UserJoinDto>> iterator = validate.iterator();
+        Iterator<ConstraintViolation<UserDto>> iterator = validate.iterator();
         List<String> messages = new ArrayList<>();
         while (iterator.hasNext()) {
-            ConstraintViolation<UserJoinDto> next = iterator.next();
+            ConstraintViolation<UserDto> next = iterator.next();
             messages.add(next.getMessage());
             System.out.println("message = " + next.getMessage());
         }
@@ -122,16 +122,16 @@ public class UserJoinValidationTest {
     void storeNameValidationIsNotEmpty() {
 
         //given
-        UserJoinDto userJoinDto = new UserJoinDto("userName", "email@email.com", null, "password", "password");
+        UserDto userDto = new UserDto("userName", "email@email.com", null, "password", "password");
 
         //when
-        Set<ConstraintViolation<UserJoinDto>> validate = validator.validate(userJoinDto);
+        Set<ConstraintViolation<UserDto>> validate = validator.validate(userDto);
 
         //Then
-        Iterator<ConstraintViolation<UserJoinDto>> iterator = validate.iterator();
+        Iterator<ConstraintViolation<UserDto>> iterator = validate.iterator();
         List<String> messages = new ArrayList<>();
         while (iterator.hasNext()) {
-            ConstraintViolation<UserJoinDto> next = iterator.next();
+            ConstraintViolation<UserDto> next = iterator.next();
             messages.add(next.getMessage());
             System.out.println("message = " + next.getMessage());
         }
@@ -144,16 +144,16 @@ public class UserJoinValidationTest {
     void storeNameValidationIsShortSize() {
 
         //given
-        UserJoinDto userJoinDto = new UserJoinDto("userName", "email@email.com", "n", "password", "password");
+        UserDto userDto = new UserDto("userName", "email@email.com", "n", "password", "password");
 
         //when
-        Set<ConstraintViolation<UserJoinDto>> validate = validator.validate(userJoinDto);
+        Set<ConstraintViolation<UserDto>> validate = validator.validate(userDto);
 
         //Then
-        Iterator<ConstraintViolation<UserJoinDto>> iterator = validate.iterator();
+        Iterator<ConstraintViolation<UserDto>> iterator = validate.iterator();
         List<String> messages = new ArrayList<>();
         while (iterator.hasNext()) {
-            ConstraintViolation<UserJoinDto> next = iterator.next();
+            ConstraintViolation<UserDto> next = iterator.next();
             messages.add(next.getMessage());
             System.out.println("message = " + next.getMessage());
         }
@@ -166,16 +166,16 @@ public class UserJoinValidationTest {
     void passwordValidationIsEmptyAndPasswordConfirmedIsEmpty() {
 
         //given
-        UserJoinDto userJoinDto = new UserJoinDto("userName", "email@email.com", "storeName", "", "");
+        UserDto userDto = new UserDto("userName", "email@email.com", "storeName", "", "");
 
         //when
-        Set<ConstraintViolation<UserJoinDto>> validate = validator.validate(userJoinDto);
+        Set<ConstraintViolation<UserDto>> validate = validator.validate(userDto);
 
         //Then
-        Iterator<ConstraintViolation<UserJoinDto>> iterator = validate.iterator();
+        Iterator<ConstraintViolation<UserDto>> iterator = validate.iterator();
         List<String> messages = new ArrayList<>();
         while (iterator.hasNext()) {
-            ConstraintViolation<UserJoinDto> next = iterator.next();
+            ConstraintViolation<UserDto> next = iterator.next();
             messages.add(next.getMessage());
             System.out.println("message = " + next.getMessage());
         }
@@ -191,16 +191,16 @@ public class UserJoinValidationTest {
     void passwordValidationIsShortSize() {
 
         //given
-        UserJoinDto userJoinDto = new UserJoinDto("userName", "email@email.com", "storeName", "123asd@", "123asd@");
+        UserDto userDto = new UserDto("userName", "email@email.com", "storeName", "123asd@", "123asd@");
 
         //when
-        Set<ConstraintViolation<UserJoinDto>> validate = validator.validate(userJoinDto);
+        Set<ConstraintViolation<UserDto>> validate = validator.validate(userDto);
 
         //Then
-        Iterator<ConstraintViolation<UserJoinDto>> iterator = validate.iterator();
+        Iterator<ConstraintViolation<UserDto>> iterator = validate.iterator();
         List<String> messages = new ArrayList<>();
         while (iterator.hasNext()) {
-            ConstraintViolation<UserJoinDto> next = iterator.next();
+            ConstraintViolation<UserDto> next = iterator.next();
             messages.add(next.getMessage());
             System.out.println("message = " + next.getMessage());
         }
@@ -213,16 +213,16 @@ public class UserJoinValidationTest {
     void passwordValidationIsComplexity() {
 
         //given
-        UserJoinDto userJoinDto = new UserJoinDto("userName", "email@email.com", "storeName", "12345asd1", "12345asd1");
+        UserDto userDto = new UserDto("userName", "email@email.com", "storeName", "12345asd1", "12345asd1");
 
         //when
-        Set<ConstraintViolation<UserJoinDto>> validate = validator.validate(userJoinDto);
+        Set<ConstraintViolation<UserDto>> validate = validator.validate(userDto);
 
         //Then
-        Iterator<ConstraintViolation<UserJoinDto>> iterator = validate.iterator();
+        Iterator<ConstraintViolation<UserDto>> iterator = validate.iterator();
         List<String> messages = new ArrayList<>();
         while (iterator.hasNext()) {
-            ConstraintViolation<UserJoinDto> next = iterator.next();
+            ConstraintViolation<UserDto> next = iterator.next();
             messages.add(next.getMessage());
             System.out.println("message = " + next.getMessage());
         }
@@ -235,16 +235,16 @@ public class UserJoinValidationTest {
     void reconfirmPasswordValidationIsEmpty() {
 
         //given
-        UserJoinDto userJoinDto = new UserJoinDto("userName", "email@email.com", "storeName", "12345asd1@", "");
+        UserDto userDto = new UserDto("userName", "email@email.com", "storeName", "12345asd1@", "");
 
         //when
-        Set<ConstraintViolation<UserJoinDto>> validate = validator.validate(userJoinDto);
+        Set<ConstraintViolation<UserDto>> validate = validator.validate(userDto);
 
         //Then
-        Iterator<ConstraintViolation<UserJoinDto>> iterator = validate.iterator();
+        Iterator<ConstraintViolation<UserDto>> iterator = validate.iterator();
         List<String> messages = new ArrayList<>();
         while (iterator.hasNext()) {
-            ConstraintViolation<UserJoinDto> next = iterator.next();
+            ConstraintViolation<UserDto> next = iterator.next();
             messages.add(next.getMessage());
             System.out.println("message = " + next.getMessage());
         }
@@ -257,16 +257,16 @@ public class UserJoinValidationTest {
     void reconfirmPasswordValidationIsNotSame() {
 
         //given
-        UserJoinDto userJoinDto = new UserJoinDto("userName", "email@email.com", "storeName", "12345asd1@", "asdasd@!A");
+        UserDto userDto = new UserDto("userName", "email@email.com", "storeName", "12345asd1@", "asdasd@!A");
 
         //when
-        Set<ConstraintViolation<UserJoinDto>> validate = validator.validate(userJoinDto);
+        Set<ConstraintViolation<UserDto>> validate = validator.validate(userDto);
 
         //Then
-        Iterator<ConstraintViolation<UserJoinDto>> iterator = validate.iterator();
+        Iterator<ConstraintViolation<UserDto>> iterator = validate.iterator();
         List<String> messages = new ArrayList<>();
         while (iterator.hasNext()) {
-            ConstraintViolation<UserJoinDto> next = iterator.next();
+            ConstraintViolation<UserDto> next = iterator.next();
             messages.add(next.getMessage());
             System.out.println("message = " + next.getMessage());
         }
