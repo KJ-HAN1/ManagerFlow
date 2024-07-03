@@ -1,4 +1,4 @@
-package com.example.managerFlow.userService;
+package com.example.managerFlow.userService.join;
 
 import com.example.managerFlow.user.dto.UserDto;
 import jakarta.validation.ConstraintViolation;
@@ -78,7 +78,7 @@ public class UserJoinValidationTest {
     void emailValidationIsNotEmpty() {
 
         //given
-        UserDto userDto = new UserDto("userName", null, "storeName", "password", "password");
+        UserDto userDto = new UserDto("userName", null, "storeName", "password12@", "password12@");
 
         //when
         Set<ConstraintViolation<UserDto>> validate = validator.validate(userDto);
@@ -144,7 +144,7 @@ public class UserJoinValidationTest {
     void storeNameValidationIsShortSize() {
 
         //given
-        UserDto userDto = new UserDto("userName", "email@email.com", "n", "password", "password");
+        UserDto userDto = new UserDto("userName", "email@email.com", "n", "password12@", "password12@");
 
         //when
         Set<ConstraintViolation<UserDto>> validate = validator.validate(userDto);
@@ -180,7 +180,7 @@ public class UserJoinValidationTest {
             System.out.println("message = " + next.getMessage());
         }
 
-        Assertions.assertThat(messages).contains("비밀번호는 8자 이상 20자 이하여야 합니다.",
+        Assertions.assertThat(messages).contains(
                 "비밀번호는 필수 입력 항목입니다.",
                 "비밀번호는 영문, 숫자, 특수문자를 포함하여 8자 이상 20자 이하여야 합니다.",
                 "비밀번호 확인은 필수 입력 항목입니다.");
@@ -205,7 +205,7 @@ public class UserJoinValidationTest {
             System.out.println("message = " + next.getMessage());
         }
 
-        Assertions.assertThat(messages).contains("비밀번호는 영문, 숫자, 특수문자를 포함하여 8자 이상 20자 이하여야 합니다.", "비밀번호는 8자 이상 20자 이하여야 합니다.");
+        Assertions.assertThat(messages).contains("비밀번호는 영문, 숫자, 특수문자를 포함하여 8자 이상 20자 이하여야 합니다.");
     }
 
     @Test

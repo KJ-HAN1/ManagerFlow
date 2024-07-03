@@ -1,4 +1,4 @@
-package com.example.managerFlow.userService;
+package com.example.managerFlow.userService.join;
 
 import com.example.managerFlow.user.domain.User;
 import com.example.managerFlow.user.dto.UserDto;
