@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Find Password</title>
+</head>
+    <body>
+    <h1>Find Password</h1>
+        <form action="#" th:action="@{/find-pw-submit}" th:object="${userDto}" method="post">
+            <label for="userName">Name:</label>
+            <input type="text" id="userName" th:field="*{userName}" /><br/>
+            <label for="email">Email:</label>
+            <input type="email" id="email" th:field="*{email}" /><br/>
+            <div th:if="${userNotFoundError}" th:text="${userNotFoundError}" style="color: red;"></div>
+            <button type="submit">Find Password</button>
+        </form>
+    </body>
+</html>
